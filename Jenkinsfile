@@ -1,14 +1,9 @@
-pipeline {
-    agent any
-    tools {
-        maven 'maven-latest' 
-    }
-    stages {
-        stage('build') {
-            steps {
-                sh 'mvn clean package'
-            }
+/* Requires the Docker Pipeline plugin */
+node('docker') {
+    checkout scm
+    stage('Build') {
+        docker.image('maven:3.3.9').inside {
+            sh 'mvn clean package'
         }
     }
 }
-
