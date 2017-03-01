@@ -1,5 +1,4 @@
-/* Requires the Docker Pipeline plugin */
-node('docker') {
+node('testslave') {
     checkout scm
     stage('Build') {
         docker.image('maven:3.3.9').inside {
