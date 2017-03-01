@@ -2,8 +2,10 @@ node('testslave') {
     checkout scm
     stage('Build') {
         sh 'env'
-        sh 'mount'
         sh 'id'
+        sh 'pwd'
+        sh 'ls -la /home'
+        sh 'ls -la /home/jenkins'
         docker.image('maven:3.3.9').inside {
             sh 'mvn clean package'
         }
