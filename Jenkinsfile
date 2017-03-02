@@ -1,7 +1,8 @@
+#!groovy
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'pwd'
                 sh 'id'
@@ -9,6 +10,7 @@ pipeline {
                 sh 'ls -laR'
                 sh 'which mvn'
                 sh 'mvn -X clean package'
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
     }
