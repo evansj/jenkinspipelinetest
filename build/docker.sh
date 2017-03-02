@@ -2,10 +2,10 @@
 
 VERSION=$1
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
-cp "$DIR/target/*.jar" "$DIR/docker"
+cp "$ROOT/target/*.jar" "$ROOT/docker"
 
-cd "$DIR/docker"
+cd "$ROOT/docker"
 docker build -t evansj/test-app:latest -t evansj/test-app:$VERSION .
 
