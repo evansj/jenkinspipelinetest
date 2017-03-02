@@ -4,12 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pwd'
-                sh 'id'
-                sh 'touch testfile'
-                sh 'ls -laR'
-                sh 'which mvn'
-                sh 'mvn -X clean package'
+                sh 'mvn -U clean package'
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
