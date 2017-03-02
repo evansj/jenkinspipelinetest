@@ -15,6 +15,10 @@ node('master') {
     }
 
     stage('Build Docker Container') {
+        sh "ls -la"
+        unarchive
+        sh "ls -la"
+        sh "ls -la build target"
         sh "./build/docker.sh ${version}"
     }
 
