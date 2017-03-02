@@ -4,10 +4,11 @@ pipeline {
         stage('build') {
             steps {
                 sh 'pwd'
-                sh 'ls -la'
                 sh 'id'
                 sh 'touch testfile'
-                sh 'mvn clean package'
+                sh 'ls -la'
+                sh 'which mvn'
+                sh 'mvn -X clean package'
             }
         }
     }
