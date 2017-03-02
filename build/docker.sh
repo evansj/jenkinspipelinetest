@@ -8,6 +8,8 @@ cd $ROOT
 
 echo "in directory $ROOT"
 
+rm -f docker/*.jar
+
 cp target/*.jar docker
 
 cd docker
