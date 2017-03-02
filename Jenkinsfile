@@ -5,6 +5,8 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -la'
+                sh 'id'
+                sh 'touch testfile'
                 sh 'mvn clean package'
             }
         }
