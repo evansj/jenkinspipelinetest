@@ -1,14 +1,21 @@
 #!groovy
 node('master') {
+    majorVer = '1.0'
+    version = "${majorVer}.${env.BUILD_ID}"
+
     stage("checkout") {
         checkout scm
     }
 
     stage('Build') {
-        sh "mvn versions:set -DgenerateBackupPoms=false -DnewVersion=1.0.${env.BUILD_ID}"
+        sh "mvn versions:set -DgenerateBackupPoms=false -DnewVersion=${version}"
         sh 'mvn -U clean package'
         junit '**/target/surefire-reports/*.xml'
         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+    }
+
+    stage('Build Docker Container') {
+        sh "./build/docker.sh ${version}"
     }
 
     stage('Promote to Dev') {
