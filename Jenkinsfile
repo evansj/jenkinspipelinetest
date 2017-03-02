@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'maven:3.3.9' }
+    agent { docker 'jenkins_slave' }
     stages {
         stage('build') {
             steps {
