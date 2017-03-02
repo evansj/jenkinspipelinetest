@@ -21,40 +21,4 @@ node('master') {
         sh "ls -la . build target docker"
         sh "./build/docker.sh ${version}"
     }
-
-    stage('Promote to Dev') {
-        input "Promote to Dev?"
-    }
-
-    stage('Deploy - Dev') {
-        echo "Deploying to Dev"
-        echo "run smoke tests etc..."
-    }
-
-    stage('Promote to QA') {
-        input "Promote to QA?"
-    }
-
-    stage('Deploy - QA') {
-        echo "Deploying to QA"
-        echo "run smoke tests etc..."
-    }
-
-    stage('Promote to UAT') {
-        input "Promote to UAT?"
-    }
-
-    stage('Deploy - UAT') {
-        echo "Deploying to UAT"
-        echo "run smoke tests etc..."
-    }
-
-    stage('Promote to Production') {
-        input "Promote to Production?"
-    }
-
-    stage('Deploy - Production') {
-        echo "Deploying to Production"
-        echo "run smoke tests etc..."
-    }
 }
