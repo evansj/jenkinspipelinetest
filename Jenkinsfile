@@ -6,7 +6,7 @@ pipeline {
                 sh 'pwd'
                 sh 'id'
                 sh 'touch testfile'
-                sh 'ls -la'
+                sh 'ls -laR'
                 sh 'which mvn'
                 sh 'mvn -X clean package'
             }
