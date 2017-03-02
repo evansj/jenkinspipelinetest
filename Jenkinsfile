@@ -12,11 +12,12 @@ node('master') {
         sh 'mvn -U clean package'
         junit '**/target/surefire-reports/*.xml'
         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+        stash includes: '**/target/*.jar', name: 'app'
     }
 
     stage('Build Docker Container') {
         sh "ls -la"
-        unarchive
+        unstash 'app'
         sh "ls -la"
         sh "ls -la build target"
         sh "./build/docker.sh ${version}"
