@@ -19,4 +19,10 @@ node('master') {
         unstash 'app'
         sh "./build/docker.sh ${version}"
     }
+
+    stage('Test Docker Container') {
+        withDockerContainer("evansj/test-app:${version}") {
+            sh "ls -l /srv/test-app-${version}.jar"
+        }
+    }
 }
